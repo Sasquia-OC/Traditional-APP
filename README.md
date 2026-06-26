@@ -1,5 +1,5 @@
 # ☕ FocusFlow
-Description : Une application web en Jva pour la gestion des taches quotidiennes.
+Description : Une application web en Java pour la gestion des taches quotidiennes.
 
 ## 🛠️ Stack Technique
 
