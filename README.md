@@ -10,7 +10,7 @@ Description : Une application web en Java pour la gestion des taches quotidienne
 
 ## 📦 Prérequis
 
-- **Java Development Kit (JDK) :** Version 8 ou supérieure.
+- **Java Development Kit (JDK) :** Version 11 ou supérieure.
 - **Apache Ant :** Installé pour exécuter les builds en ligne de commande (ou utilisez directement l'IDE NetBeans).
 
 ## 🚀 Installation et Exécution
