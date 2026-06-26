@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>FocusFlow</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+    </head>
+    <body>
+
+        <div class="app">
+
+            <!-- SIDEBAR -->
+            <nav class="sidebar">
+                <div class="logo">Focus<span>Flow</span></div>
+                <div class="nav-item active" onclick="filtrerNav('tous', this)">
+                    <i class="ti ti-layout-dashboard"></i> Toutes
+                    <span class="badge-count" id="count-tous">0</span>
+                </div>
+                <div class="nav-item" onclick="filtrerNav('faites', this)">
+                    <i class="ti ti-check"></i> Complétées
+                    <span class="badge-count" id="count-faites">0</span>
+                </div>
+                <div class="nav-item" onclick="filtrerNav('actives', this)">
+                    <i class="ti ti-clock"></i> En cours
+                    <span class="badge-count" id="count-actives">0</span>
+                </div>
+                <div class="sidebar-footer">
+                    <div class="nav-item" id="btn-dark" onclick="toggleDark()">
+                        <i class="ti ti-moon"></i> Mode sombre
+                    </div>
+                </div>
+            </nav>
+
+            <!-- MAIN -->
+            <main class="main">
+
+                <!-- Top bar -->
+                <div class="topbar">
+                    <h1 id="titre-section">Toutes les tâches</h1>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-label">Total</div>
+                        <div class="stat-value purple" id="s-total">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Complétées</div>
+                        <div class="stat-value green" id="s-faites">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">En cours</div>
+                        <div class="stat-value amber" id="s-actives">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Priorité haute</div>
+                        <div class="stat-value red" id="s-eleve">0</div>
+                    </div>
+                </div>
+
+                <!-- Barre d'ajout rapide -->
+                <div class="add-bar">
+                    <i class="ti ti-plus add-icon"></i>
+                    <input class="add-input" id="add-nom" placeholder="Ajouter une tâche... (Entrée pour valider)">
+                    <div class="add-meta">
+                        <input type="date" class="pill-select" id="add-date">
+                        <select class="pill-select" id="add-priorite">
+                            <option value="ELEVE">Élevée</option>
+                            <option value="MOYEN" selected>Moyenne</option>
+                            <option value="BAS">Basse</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="ajouterTache()">
+                            <i class="ti ti-plus"></i> Ajouter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section tâches -->
+                <div class="tasks-section">
+                    <div class="tasks-header">
+                        <span id="tasks-count">0 tâche</span>
+                        <div class="filters">
+                            <button class="filter-pill active" onclick="filtrerListe('tous', this)">Toutes</button>
+                            <button class="filter-pill" onclick="filtrerListe('ELEVE', this)">Élevée</button>
+                            <button class="filter-pill" onclick="filtrerListe('MOYEN', this)">Moyenne</button>
+                            <button class="filter-pill" onclick="filtrerListe('BAS', this)">Basse</button>
+                        </div>
+                    </div>
+                    <ul id="liste"></ul>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- MODAL MODIFICATION -->
+        <div class="modal-bg" id="modal">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3>Modifier la tâche</h3>
+                    <button class="icon-btn" onclick="fermerModal()"><i class="ti ti-x"></i></button>
+                </div>
+                <input type="hidden" id="modal-id">
+                <label class="modal-label">Nom de la tâche</label>
+                <input type="text" class="modal-input" id="modal-nom">
+                <label class="modal-label">Date</label>
+                <input type="date" class="modal-input" id="modal-date">
+                <label class="modal-label">Priorité</label>
+                <select class="modal-input" id="modal-priorite">
+                    <option value="ELEVE">Élevée</option>
+                    <option value="MOYEN">Moyenne</option>
+                    <option value="BAS">Basse</option>
+                </select>
+                <div class="modal-footer">
+                    <button class="btn" onclick="fermerModal()">Annuler</button>
+                    <button class="btn btn-primary" onclick="sauvegarder()">
+                        <i class="ti ti-check"></i> Sauvegarder
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
